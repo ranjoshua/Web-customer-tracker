@@ -6,7 +6,7 @@
 <head>
 	<title>List Costumers</title>
 	
-	<!-- reference our style sheet -->
+	<!-- reference style sheet -->
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -28,7 +28,7 @@
 			<input type="button" value="Add Customer"
 				 onclick="window.location.href='showFormForAdd'; return false;" class="add-button"/>
 				 
-			<!-- add our HTML table here -->
+			<!-- HTML table here -->
 			<table>
 								<!-- tr=tableRow, th=tableHeader, td=tableData -->
 				<tr> 
@@ -38,7 +38,7 @@
 					<th>Action</th>
 				</tr>
 				
-				<!-- loop over and print our customers -->
+				<!-- loop over and print customers -->
 				<c:forEach var="tempCustomer" items="${customers}">
 				
 					<!-- construct an 'update' link with customer id -->
