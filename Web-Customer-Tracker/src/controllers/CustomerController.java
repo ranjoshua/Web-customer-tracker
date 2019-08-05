@@ -18,16 +18,13 @@ import services.CustomerService;
 @RequestMapping("/customer")
 public class CustomerController {
 
-	//inject the CustomerService into this controller
 	@Autowired
 	private CustomerService customerService;
 	
 	@GetMapping("/list")
 	public String listCumstomers(Model m) {
 		
-		//get the customers from the service
 		List<Customer> customers = customerService.getCustomers();
-		//add the customer to the model
 		m.addAttribute("customers", customers);
 		
 		return "list-customers";
@@ -36,7 +33,6 @@ public class CustomerController {
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model m) {
 		
-		//create and add new model attribute to bind form data.
 		m.addAttribute("customer", new Customer());
 		
 		return "customer-form";
@@ -45,7 +41,6 @@ public class CustomerController {
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer theCustomer) {
 		
-		//save the customer using our service
 		customerService.saveCustomer(theCustomer);
 		
 		return "redirect:/customer/list";
@@ -54,13 +49,8 @@ public class CustomerController {
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("customerId") int id, Model m) {
 		
-		//get the customer from service
 		Customer c = customerService.getCustomer(id);
-		
-		//set customer as a model attribute to pre-populate the form
 		m.addAttribute("customer", c);
-		
-		//send over to our form	
 		return "customer-form";
 	}
 	
@@ -68,8 +58,7 @@ public class CustomerController {
 	public String deleteCustomer(@RequestParam("customerId") int id) {
 		
 		customerService.deleteCustomer(id);
-			
-		//send over to our form	
+
 		return "redirect:/customer/list";
 	}
 }
