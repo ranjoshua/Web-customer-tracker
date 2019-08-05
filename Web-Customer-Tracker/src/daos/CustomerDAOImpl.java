@@ -13,24 +13,16 @@ import entities.Customer;
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
 
-	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 			
 	@Override
 	public List<Customer> getCustomers() {
 		
-		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-		
-		// create a query
+		Session currentSession = sessionFactory.getCurrentSession();		
 		Query<Customer> theQuery = 
-				currentSession.createQuery("from Customer order by lastName", Customer.class);
-		
-		// execute query and get result list
-		List<Customer> customers = theQuery.getResultList();
-				
-		// return the results		
+				currentSession.createQuery("from Customer order by lastName", Customer.class);	
+		List<Customer> customers = theQuery.getResultList();				
 		return customers;
 	}
 
