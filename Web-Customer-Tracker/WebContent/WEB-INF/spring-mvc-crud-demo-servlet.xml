@@ -15,7 +15,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Add support for component scanning -->
-	<context:component-scan base-package="com.luv2code.springdemo" />
+	<context:component-scan base-package="spring" />
 
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
@@ -46,7 +46,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<property name="packagesToScan" value="com.luv2code.springdemo.entity" />
+		<property name="packagesToScan" value="spring.entities" />
 		<property name="hibernateProperties">
 		   <props>
 		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -71,14 +71,5 @@
 	
 	
 </beans>
-
-
-
-
-
-
-
-
-
 
 
